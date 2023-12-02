@@ -1,0 +1,17 @@
+
+<div *ngFor="let li of data" >
+  <app-card >
+    <div class="card">
+
+    <h2>{{ li.patientId }}</h2>
+    <h4>{{ li.date | date: 'fullDate' }}</h4>
+
+    <p>Descripcion</p>
+    <h5>{{ li.description }}</h5>
+    <p>Diagnostico: {{ li.diagnosis }}</p>
+    <p>Tratamiento: {{ li.treatment }}</p>
+    <div class="card-buttons">
+    </div>
+    </div>
+  </app-card>
+</div>
