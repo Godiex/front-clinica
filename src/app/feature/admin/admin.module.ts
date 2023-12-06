@@ -25,76 +25,74 @@ import {FormUpdateEpsComponent} from "./eps-management/components/form-update-ep
 
 import {TableDoctorComponent} from "./doctor-management/components/table-doctor/table-doctor.component";
 import {
-    FormCreateDoctorComponent
+  FormCreateDoctorComponent
 } from './doctor-management/components/form-create-doctor/form-create-doctor.component';
 import {
-    FormCreatePatientComponent
+  FormCreatePatientComponent
 } from './patient-management/components/form-create-patient/form-create-patient.component';
 import {TablePatientComponent} from './patient-management/components/table-patient/table-patient.component';
 import {PatientService} from "./patient-management/shared/Services/patient.service";
 import {
-    FormUpdateDoctorComponent
+  FormUpdateDoctorComponent
 } from './doctor-management/components/form-update-doctor/form-update-doctor.component';
 import {
-    FormUpdatePatientComponent
+  FormUpdatePatientComponent
 } from './patient-management/components/form-update-patient/form-update-patient.component';
 import {UserPatientService} from "./patient-management/shared/Services/user-patient.service";
 import {AdminManagementComponent} from './admin-management/admin-management.component';
-import {UserManagementComponent} from './user-management/user-management.component';
 import {FormUpdateAdminComponent} from './admin-management/components/form-update-admin/form-update-admin.component';
 import {FormCreateAdminComponent} from './admin-management/components/form-create-admin/form-create-admin.component';
 import {TableAdminComponent} from './admin-management/components/table-admin/table-admin.component';
 import {UserAdminService} from "./admin-management/shared/Services/user-admin.service";
 import {AdminService} from "./admin-management/shared/Services/admin.service";
-import {MedicalHistoryService} from "../clinic/doctor/consultar-medical-history/Services/medical-history.service";
+import {MedicalHistoryService} from "../clinic/doctor/shared/services/medical-history.service";
 
 
 @NgModule({
-    declarations: [
-        EpsManagementComponent,
-        LayoutAdminComponent,
-        SidebarAdminComponent,
-        PageAdminComponent,
-        TableEpsComponent,
-        FormCreateEpsComponent,
-        FormUpdateEpsComponent,
-        PageAdminComponent,
-        DoctorManagementComponent,
-        PatientManagementComponent,
-        TableDoctorComponent,
-        FormCreateDoctorComponent,
-        FormCreatePatientComponent,
-        TablePatientComponent,
-        FormUpdateDoctorComponent,
-        FormUpdatePatientComponent,
-        AdminManagementComponent,
-        UserManagementComponent,
-        FormUpdateAdminComponent,
-        FormCreateAdminComponent,
-        TableAdminComponent
-    ],
-    imports: [
-        CommonModule,
-        AdminRoutingModule,
-        MatPaginatorModule,
-        MatTableModule,
-        NgxPaginationModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MdbModalModule,
-        MatButtonModule,
-        MatChipsModule,
-        MatCardModule
-    ],
-    providers: [
-        EpsService,
-        DoctorService,
-        PatientService,
-        AdminService,
-        UserService,
-        UserPatientService,
-        UserAdminService,
-        MedicalHistoryService],
+  declarations: [
+    EpsManagementComponent,
+    LayoutAdminComponent,
+    SidebarAdminComponent,
+    PageAdminComponent,
+    TableEpsComponent,
+    FormCreateEpsComponent,
+    FormUpdateEpsComponent,
+    PageAdminComponent,
+    DoctorManagementComponent,
+    PatientManagementComponent,
+    TableDoctorComponent,
+    FormCreateDoctorComponent,
+    FormCreatePatientComponent,
+    TablePatientComponent,
+    FormUpdateDoctorComponent,
+    FormUpdatePatientComponent,
+    AdminManagementComponent,
+    FormUpdateAdminComponent,
+    FormCreateAdminComponent,
+    TableAdminComponent
+  ],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    MatPaginatorModule,
+    MatTableModule,
+    NgxPaginationModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MdbModalModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatCardModule
+  ],
+  providers: [
+    EpsService,
+    DoctorService,
+    PatientService,
+    AdminService,
+    UserService,
+    UserPatientService,
+    UserAdminService,
+    MedicalHistoryService],
 })
 export class AdminModule {
 }

@@ -8,6 +8,7 @@ import {ChangeInfoAdminService} from "../../shared/Services/change-info-admin.se
 import {UserAdminService} from "../../shared/Services/user-admin.service";
 import {EpsService} from "../../../eps-management/shared/service/eps.service";
 import {EpsDto} from "../../../eps-management/shared/models/eps-dto.interface";
+import {NotificationService} from "../../../../../shared/notification.service";
 
 @Component({
   selector: 'app-form-create-admin',
@@ -32,6 +33,7 @@ export class FormCreateAdminComponent implements OnInit{
     private userService: UserAdminService,
     public modalRef: MdbModalRef<FormCreateAdminComponent>,
     private changeInfoAdminService: ChangeInfoAdminService,
+    private notificationService: NotificationService,
   ) {
     this.builderForms();
   }
@@ -44,7 +46,7 @@ export class FormCreateAdminComponent implements OnInit{
       secondName: ['', [Validators.required, Validators.maxLength(50)]],
       lastName: ['', [Validators.required, Validators.maxLength(50)]],
       secondLastName: ['', [Validators.required, Validators.maxLength(50)]],
-      documentType: ['Seleccione', Validators.required],
+      documentType: ['', Validators.required],
       documentNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(15)]],// Ajustar el rango según el formato deseado
@@ -54,6 +56,16 @@ export class FormCreateAdminComponent implements OnInit{
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
 
     });
+  }
+  validateForm(): boolean {
+    const form = this.formulario;
+    for (const i in form.controls) {
+      if (form.controls.hasOwnProperty(i)) {
+        form.controls[i].markAsTouched();
+        form.controls[i].updateValueAndValidity();
+      }
+    }
+    return form.valid;
   }
 
   close(): void {
@@ -67,6 +79,8 @@ export class FormCreateAdminComponent implements OnInit{
   }
 
   registerAdmin() {
+    if(this.formulario.value.password == this.formulario.value.confirmPassword){
+
     if (this.formulario.valid) {
       const adminRegistration = {
         password: this.formulario.value.password,
@@ -87,17 +101,22 @@ export class FormCreateAdminComponent implements OnInit{
         (result) => {
           this.changeInfoAdminService.emitirEvento("RECARGA_DATA");
           this.close();
-          alert('Admin creado exitosamente');
-          this.close(); // Cerrar el modal después de la creación exitosa del doctor
+          this.notificationService.mostrarExito("Admin creado exitosamente");
+          this.close();
         },
         () => {
-          alert('No se pudo crear el doctor, contacta al administrador');
+          this.notificationService.mostrarError("No se pudo crear el doctor, contacta al administrador");
+          alert('');
         }
       );
     } else {
-      alert('Por favor, completa correctamente todos los campos del formulario');
+      this.notificationService.mostrarError("Por favor, completa correctamente todos los campos del formulario");
     }
 
+    }
+    else{
+      this.notificationService.mostrarError("Las contraseñas deben coincidir")
+    }
   }
 }
 
