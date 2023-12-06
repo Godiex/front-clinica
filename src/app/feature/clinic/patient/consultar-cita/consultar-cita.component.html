@@ -70,12 +70,8 @@
               <mat-icon>cancel</mat-icon>
               <span>Cancelar</span>
             </button>
-            <button *ngIf="item.state === 'Attended'" STYLE="background-color: #08c736; color: white" mat-raised-button
-                    class="m-2 rounded p-2 d-flex align-items-center" (click)="verInformacionCita(item.id)">
-              <mat-icon>visibility</mat-icon>
-              <span>Ver Información</span>
-            </button>
-            <button *ngIf="item.state === 'Canceled'" STYLE="background-color: #717171; color: white" mat-raised-button
+
+            <button *ngIf="item.state === 'Canceled' || item.state === 'Attended' " STYLE="background-color: #717171; color: white" mat-raised-button
                     class="m-2 rounded p-2">
 
               <span>Sin Acciones</span>
